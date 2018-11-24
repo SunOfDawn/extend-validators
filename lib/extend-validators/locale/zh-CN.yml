@@ -1,0 +1,9 @@
+zh-CN:
+  errors:
+    # The default format to use in full error messages.
+    format: "%{attribute} %{message}"
+
+    # The values :model, :attribute and :value are always available for interpolation
+    # The value :count is available when applicable. Can be used for pluralization.
+    messages:
+      invalid_json_value: 不是有效的json格式文本

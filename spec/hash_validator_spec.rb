@@ -1,27 +1,27 @@
 require 'spec_helper'
 
-class JsonValidateable
+class HashValidateable
   include ActiveModel::Validations
-  validates :json_value, presence: true, json: {
-      [:first_name, :second_name] => { presence: true },
-      age: { numericality: { only_integer: true, greater_than: 0 } },
-      sex: { inclusion: { in: [1, 2] } },
-      email: { format: { with: /\A[a-zA-Z0-9.!\#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\z/ } },
-      address: { length: { minimum: 5, maximum: 40, message: 'address not available length (5~40)' } },
-      other: { json: {
-          birthday: { format: { with: /(\d{4}-\d{1,2}-\d{1,2})/ } },
-          description: { allow_blank: true }
-      } },
+  validates :json_value, presence: true, hash: {
+    [:first_name, :second_name] => { presence: true },
+    age: { numericality: { only_integer: true, greater_than: 0 } },
+    sex: { inclusion: { in: [1, 2] } },
+    email: { format: { with: /\A[a-zA-Z0-9.!\#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\z/ } },
+    address: { length: { minimum: 5, maximum: 40, message: 'address not available length (5~40)' } },
+    other: { hash: {
+      birthday: { format: { with: /(\d{4}-\d{1,2}-\d{1,2})/ } },
+      description: { allow_blank: true }
+    } },
   }
-  validates_json_of :json_value, {
-      age: { numericality: { only_integer: true, greater_than: 0 } },
-      description: { format: { with: /.*/ }, allow_blank: true }
+  validates_hash_of :json_value, {
+    age: { numericality: { only_integer: true, greater_than: 0 } },
+    description: { format: { with: /.*/ }, allow_blank: true }
   }
   attr_accessor  :json_value
 end
 
-describe ActiveModel::Validations::JsonValidator do
-  subject { JsonValidateable.new }
+describe ActiveModel::Validations::HashValidator do
+  subject { HashValidateable.new }
   let(:json) { { first_name: 'Melt',
                  second_name: 'Lilith',
                  age: 17,

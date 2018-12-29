@@ -6,4 +6,5 @@ zh-CN:
     # The values :model, :attribute and :value are always available for interpolation
     # The value :count is available when applicable. Can be used for pluralization.
     messages:
-      invalid_json_value: 不是有效的json格式文本
+      invalid_hash_value: 不是有效的hash格式文本
+      invalid_array_value: 不是有效的array格式文本

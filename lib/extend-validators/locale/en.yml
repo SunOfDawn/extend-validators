@@ -6,4 +6,5 @@ en:
     # The values :model, :attribute and :value are always available for interpolation
     # The value :count is available when applicable. Can be used for pluralization.
     messages:
-      invalid_json_value: "not valid json text"
+      invalid_hash_value: "not valid hash text"
+      invalid_array_value: "not valid array text"

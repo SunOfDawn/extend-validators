@@ -1,4 +1,5 @@
-require 'extend-validators/validations/json_validator'
+require 'extend-validators/validations/hash_validator'
+require 'extend-validators/validations/array_validator'
 require 'extend-validators/validations/json_numericality_validator'
 require 'active_support/core_ext/object/deep_dup'
 
